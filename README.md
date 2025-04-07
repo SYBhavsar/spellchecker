@@ -5,7 +5,12 @@
 
 A simple spell-checking web application built with **Laravel**, **Alpine.js**, and **Tailwind CSS**. It allows users to check for misspellings in real-time, view suggestions, and update a custom dictionary.
 
-![alt text](<Screenshot from 2025-04-07 10-44-42.png>)
+## Screenshot
+![Spell Checker UI](resources/media/screenshot.png)
+
+## Demo
+![Spell Checker Demo](resources/media/recording.webm)
+
 
 ## **🚀 Features**  
 ✔️ **Spell Check**: Identify misspelled words from the input text.  
