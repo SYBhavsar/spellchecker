@@ -37,17 +37,13 @@
     </div>
 
     <!-- Action Buttons (Now below real-time suggestions) -->
-    <div class="flex justify-between mt-4">
-        <button @click="checkSpelling"
-                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
-            Check Spelling
-        </button>
-        <button @click="clearDictionary"
-                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">
-            Clear Dictionary
-        </button>
-    </div>
+    <div class="grid grid-cols-2  gap-2 mt-4 flex">
 
+        <button @click="checkSpellingWithSuggestions"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">Check with Suggestions</button>
+        <button @click="clearDictionary"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">Clear Dictionary</button>
+    </div>
 
     <!-- Misspelled Words -->
     <div class="mt-6">
@@ -88,19 +84,18 @@
             realTimeSuggestions: {},
             newWord: '',
 
-            checkSpelling() {
-                fetch(`/spell-check?text=${encodeURIComponent(this.text)}`)
+
+            checkSpellingWithSuggestions() {
+                fetch(`/spell-check-text?text=${encodeURIComponent(this.text)}`)
                     .then(res => res.json())
                     .then(data => {
-                        this.misspelled = data.misspelled.reduce((acc, word) => {
-                            acc[word] = [];
-                            return acc;
-                        }, {});
+                        // Append new results without removing old ones
+                        for (const word in data.misspelled) {
+                                this.misspelled[word] = data.misspelled[word]; // Add new word suggestions
+                        }
                     })
                     .catch(error => console.error('Error:', error));
             },
-
-
 
             checkRealTimeSpelling() {
                 if (!this.text.trim()) {
