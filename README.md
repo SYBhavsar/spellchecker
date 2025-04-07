@@ -18,7 +18,7 @@ A simple spell-checking web application built with **Laravel**, **Alpine.js**, a
 
 ### **1️⃣ Clone the Repository**  
 ```sh
-git clone https://github.com/your-username/spell-checker.git
+git clone https://github.com/SYBhavsar/spell-checker.git
 cd spell-checker
 ```
 
